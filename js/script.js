@@ -4,6 +4,7 @@ const languageButtons = document.querySelectorAll("[data-language]");
 const translatableElements = document.querySelectorAll("[data-pt][data-en]");
 const pageTitle = document.querySelector("title");
 const description = document.querySelector('meta[name="description"]');
+const cvLink = document.querySelector(".cv-link");
 const themeToggle = document.querySelector(".theme-toggle");
 const themeColor = document.querySelector('meta[name="theme-color"]');
 
@@ -45,6 +46,8 @@ function setLanguage(language) {
         button.setAttribute("aria-pressed", String(isActive));
     });
     themeToggle.setAttribute("aria-label", themeToggle.dataset[`${selectedLanguage}Label`]);
+    cvLink.href = cvLink.dataset[`${selectedLanguage}File`];
+    cvLink.download = cvLink.dataset[`${selectedLanguage}Download`];
 
     pageTitle.textContent = selectedLanguage === "en"
         ? "Portfolio — Lourenço Souto"
